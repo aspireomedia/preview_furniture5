@@ -1,0 +1,41 @@
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# local env files
+.env*
+
+# vercel
+.vercel
+
+# misc
+.DS_Store
+*.pem
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# agent / cache
+.reo/*.local.md
+
+# Never commit supplied design-reference media
+reference-*.png
+reference-*.jpg
+img_*.jpg
+img_*.png

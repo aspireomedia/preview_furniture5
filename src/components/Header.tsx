@@ -10,7 +10,7 @@ export function Header({ cartCount, menuOpen, setMenuOpen, searchOpen, setSearch
     <div className="utility-bar"><div className="shell utility-inner"><span>Free shipping for orders over Rp 1.000.000</span><span className="utility-promise">Quality furniture for every space</span><div className="utility-links"><a href="#contact">Help Center</a><a href="#products">Track Order</a><a href="#about">Store Locator</a></div></div></div>
     <div className="shell header-row">
       <button className="icon-button mobile-only" aria-label={menuOpen ? "Close menu" : "Open menu"} aria-expanded={menuOpen} onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? <X /> : <Menu />}</button>
-      <a href="#home" className="brand" aria-label="RUMAIO home"><strong>RUMAIO</strong><span>HOME FOR BETTER LIVING</span></a>
+      <a href="#home" className="brand" aria-label="Better Space home"><strong>Better Space</strong><span>FURNITURE FOR A BETTER LIVING.</span></a>
       <nav className="desktop-nav" aria-label="Main navigation">{navLinks.map(([label, href]) => <a href={href} key={label}>{label}</a>)}</nav>
       <div className="header-actions">
         <button className="search-trigger" aria-label="Search furniture" onClick={() => setSearchOpen(!searchOpen)}><Search size={18}/><span>Search furniture, room, or decor</span></button>

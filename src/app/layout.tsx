@@ -6,9 +6,9 @@ const display = Cormorant_Garamond({ variable: "--font-display", subsets: ["lati
 const sans = DM_Sans({ variable: "--font-sans", subsets: ["latin"], weight: ["400", "500", "600", "700"] });
 
 export const metadata: Metadata = {
-  title: "RUMAIO | Furniture for Better Living",
+  title: "Better Space | Furniture for a Better Living",
   description: "Thoughtfully selected furniture for comfortable, functional and beautiful homes.",
-  openGraph: { title: "RUMAIO | Furniture for Better Living", description: "Furniture for comfortable, functional and beautiful homes.", type: "website" },
+  openGraph: { title: "Better Space | Furniture for a Better Living", description: "Furniture for comfortable, functional and beautiful homes.", type: "website" },
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

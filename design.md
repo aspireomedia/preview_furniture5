@@ -1,4 +1,4 @@
-# RUMAIO furniture store preview
+# Better Space furniture store preview
 
 ## Purpose
 A polished home-living ecommerce homepage that turns visitors into furniture collection browsers. The primary visual source is the supplied RUMAIO reference; Figma node `1:1411` from the Gadget Store file is used only for ecommerce hierarchy and responsive section structure.

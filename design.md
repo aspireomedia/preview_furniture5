@@ -10,12 +10,12 @@ Indonesian home and workspace shoppers seeking warm, modern furniture. Primary c
 Utility notice → RUMAIO header/search/menu → lifestyle hero → shop by room → visual room categories → recommended products → dining collection campaign → service reassurance → brand/footer links.
 
 ## Visual language
-Warm editorial retail: ivory #fffef9, cream #f4f0e7, charcoal #202722, forest #28352d, muted olive #465247, warm gray borders #e5e3dd. Cormorant Garamond creates the elegant furniture-editorial display voice; DM Sans supports compact shopping UI. Natural daylight interiors, pale timber, soft linen, ceramics and greenery are used as the repeated identity motif.
+Warm editorial retail using the approved RUMAIO palette: chocolate #37291d frames the utility bar and footer, burgundy #461102 marks primary purchase and promotion moments, olive #5d5b35 carries secondary shopping controls, and cool oatmeal #d5d1bc supports service surfaces. White and warm white remain the dominant shopping canvas. Cormorant Garamond creates the elegant furniture-editorial display voice; DM Sans supports compact shopping UI. Natural daylight interiors, pale timber, soft linen, ceramics and greenery are used as the repeated identity motif.
 
 Dials: ENERGY 2 / RHYTHM 3 / MOTION 1. The hero and editorial dining banner are full visual pauses; category imagery and dense product browsing create deliberately different rhythms. Motion is reserved for buttons/cards and the mobile menu, so browsing remains calm.
 
 ## Major visual decisions
-- Deep forest is reserved for compact CTAs, active states, and the utility bar, anchoring a calm premium retail identity rather than the blue appliance reference.
+- Chocolate frames permanent brand zones, burgundy is restricted to decisive purchase and promotion actions, olive supports secondary product actions, and oatmeal gives service surfaces warmth without muddying the white retail canvas.
 - Serif headings sit over uncluttered or scrimmed photo regions, preserving editorial hierarchy and text contrast.
 - Category cards use a bottom scrim strictly to make white photography captions legible.
 - Product cards are flat, white and lightly bordered so product imagery, not decorative surfaces, remains the focus.

@@ -1,16 +1,16 @@
 # Better Space furniture store preview
 
 ## Purpose
-A polished home-living ecommerce homepage that turns visitors into furniture collection browsers. The primary visual source is the supplied RUMAIO reference; Figma node `1:1411` from the Gadget Store file is used only for ecommerce hierarchy and responsive section structure.
+A polished Better Space home-living ecommerce homepage that turns visitors into furniture collection browsers. Figma node `1:1411` from the Gadget Store file informed ecommerce hierarchy and responsive section structure only.
 
 ## Users and conversion objective
 Indonesian home and workspace shoppers seeking warm, modern furniture. Primary conversion: browse collection and add products to a local preview cart. Secondary: navigate room collections and subscribe for updates.
 
 ## Journey and IA
-Utility notice → RUMAIO header/search/menu → lifestyle hero → shop by room → visual room categories → recommended products → dining collection campaign → service reassurance → brand/footer links.
+Utility notice → Better Space header/search/menu → lifestyle hero → shop by room → visual room categories → recommended products → dining collection campaign → service reassurance → brand/footer links.
 
 ## Visual language
-Warm editorial retail using the approved RUMAIO palette: chocolate #37291d frames the utility bar and footer, burgundy #461102 marks primary purchase and promotion moments, olive #5d5b35 carries secondary shopping controls, and cool oatmeal #d5d1bc supports service surfaces. White and warm white remain the dominant shopping canvas. Cormorant Garamond creates the elegant furniture-editorial display voice; DM Sans supports compact shopping UI. Natural daylight interiors, pale timber, soft linen, ceramics and greenery are used as the repeated identity motif.
+Warm Better Space editorial retail using the approved palette: chocolate #37291d frames the utility bar and footer, burgundy #461102 marks primary purchase and promotion moments, olive #5d5b35 carries secondary shopping controls, and cool oatmeal #d5d1bc supports service surfaces. White and warm white remain the dominant shopping canvas. Cormorant Garamond creates the elegant furniture-editorial display voice; DM Sans supports compact shopping UI. Natural daylight interiors, pale timber, soft linen, ceramics and greenery are used as the repeated identity motif.
 
 Dials: ENERGY 2 / RHYTHM 3 / MOTION 1. The hero and editorial dining banner are full visual pauses; category imagery and dense product browsing create deliberately different rhythms. Motion is reserved for buttons/cards and the mobile menu, so browsing remains calm.
 

@@ -1,15 +1,9 @@
 ## State
-- Initial RUMAIO furniture storefront implementation in progress.
-- Source direction: supplied RUMAIO image, Figma node 1:1411 used for hierarchy only.
-- Local assets: public/images, sourced for furniture/interior use.
-- Required release target: GitHub aspireomedia/preview_furniture5, Vercel project preview5-furniture-store, preview5.aspireomedia.com.
-
-## Pending
-- Implement components and responsive styling.
-- Run lint, type-check, production build and visual QA at 1440/744/375.
-- Create/push GitHub repo; deploy Vercel; attach and verify branded domain.
+- Better Space furniture storefront is deployed and branded at preview5.aspireomedia.com.
+- Figma node 1:1411 informed hierarchy only.
+- Local furniture/interior assets are stored under public/images.
 
 ## Constraints
-- No appliance blue aesthetic or Mansoury branding.
+- Approved Better Space palette: chocolate #37291d, burgundy #461102, olive #5d5b35, cool oatmeal #d5d1bc.
 - No temporary Figma asset URLs in production.
 - Client-only preview interactions: menu, search, wishlist and cart.

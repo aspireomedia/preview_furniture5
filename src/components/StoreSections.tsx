@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { ArrowRight, BedDouble, Box, Headphones, Heart, LampDesk, LayoutGrid, LockKeyhole, PackageCheck, Sofa, Table2, Truck, Wrench } from "lucide-react";
+import { ArrowRight, BedDouble, Box, Headphones, Heart, LampDesk, LayoutGrid, LockKeyhole, PackageCheck, ShoppingCart, Sofa, Table2, Truck, Wrench } from "lucide-react";
 import { categories, products, roomCategories } from "@/data/store";
 
 const categoryIcons = { sofa: Sofa, bed: BedDouble, table: Table2, desk: LampDesk, cabinet: Box, lamp: LampDesk, vase: LayoutGrid, tag: PackageCheck };
@@ -13,7 +13,7 @@ export function CategoryNavigation() { return <section className="room-nav" aria
 export function CategoryGrid() { return <section id="rooms" className="shell section categories-section"><div className="section-heading"><h2>Featured Categories</h2><a href="#products">See all categories <ArrowRight size={14}/></a></div><div className="category-grid">{categories.map((category) => <a href="#products" className="category-card" key={category.name}><Image src={category.image} alt={`${category.name} furniture collection`} fill sizes="(max-width: 640px) 50vw, 33vw"/><span className="card-scrim"/><div><h3>{category.name}</h3><p>{category.description}</p></div><i><ArrowRight size={16}/></i></a>)}</div></section>; }
 
 export function ProductGrid({ liked, toggleLiked, addToCart }: { liked: string[]; toggleLiked: (id: string) => void; addToCart: () => void }) { return <section id="products" className="shell section products-section"><div className="products-heading"><h2>Products You May Like</h2><div className="product-tabs" aria-label="Product filters"><button className="active">Best Seller</button><button>New Arrivals</button><button>Special Offer</button><a href="#products">View All <ArrowRight size={14}/></a></div></div><div className="product-grid">{products.map((product) => <article className="product-card" key={product.id}><div className="product-image"><Image src={product.image} alt={product.name} fill sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, 20vw"/><button className="wish" aria-label={`Add ${product.name} to wishlist`} aria-pressed={liked.includes(product.id)} onClick={() => toggleLiked(product.id)}><Heart size={18} fill={liked.includes(product.id) ? "currentColor" : "none"}/></button></div><div className="product-info"><p className="product-type">{product.category}</p><h3>{product.name}</h3><small>Made for everyday living</small><div className="product-bottom"><b>{product.price}</b><button className="cart-add" aria-label={`Add ${product.name} to cart`} onClick={addToCart}><ShoppingIcon/></button></div></div></article>)}</div></section>; }
-function ShoppingIcon() { return <PackageCheck size={17}/>; }
+function ShoppingIcon() { return <ShoppingCart size={17} strokeWidth={2.1}/>; }
 
 export function CollectionBanner() { return <section id="inspiration" className="shell collection-banner"><Image src="/images/promo.jpg" alt="Warm dining room with timber dining table and natural light" fill sizes="(max-width: 1240px) 100vw, 1200px"/><div className="banner-wash"/><div className="collection-copy"><p className="eyebrow">DINING, MADE TO GATHER</p><h2>Complete Your<br/>Dining Space</h2><p>Timeless dining furniture for meaningful gatherings with family and friends.</p><a href="#products" className="dark-cta">Browse dining pieces <ArrowRight size={15}/></a></div></section>; }
 

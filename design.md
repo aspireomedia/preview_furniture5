@@ -27,6 +27,8 @@ Next.js 16, TypeScript, App Router, Tailwind CSS base plus component-focused CSS
 ## Data and integrations
 Product catalogue is a 100-item furniture dataset seeded from EDI's catalogue pack (`/home/ubuntu/aspireomedia/furniture-catalog/`), covering 18 furniture types across 7 rooms. Names, descriptions, materials, dimensions and prices are authored demo content — realistic but not real inventory or real prices. Photography is real, licensed Pexels stock, hotlinked from `images.pexels.com` (whitelisted in `next.config.ts` remotePatterns); each product has a distinct photo with zero duplicates verified across the full catalogue. Every PDP recommendation is selected by exact product type—not just by room—so sofa PDPs show sofas, desk PDPs show desks, dining-table PDPs show dining tables, and bed-frame PDPs show bed frames. Product controls update client state only. No backend, auth, checkout, external analytics, payment, or database connection is included.
 
+The homepage "Products You May Like" section is deliberately capped at **25 products** (5 rows x 5 columns on the desktop grid; `HOME_GRID_LIMIT` in `src/components/StoreSections.tsx`). The remainder of the catalogue is reached through "View All" → `/products`, which is the full 100-item browsable index with a room sidebar. Any future growth of the catalogue should not lengthen the homepage grid.
+
 ## Security
 No credentials or private operational data in the app. No checkout or payment claims. User email newsletter control shows an honest local confirmation state only.
 

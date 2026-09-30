@@ -7,7 +7,7 @@ A polished Better Space home-living ecommerce homepage that turns visitors into 
 Indonesian home and workspace shoppers seeking warm, modern furniture. Primary conversion: browse collection and add products to a local preview cart. Secondary: navigate room collections and subscribe for updates.
 
 ## Journey and IA
-Utility notice → Better Space header/search/menu → lifestyle hero → shop by room → visual room categories → recommended products → dining collection campaign → service reassurance → brand/footer links.
+Utility notice → Better Space header/search/menu → lifestyle hero → shop by room → visual room categories → recommended products → dining collection campaign → service reassurance → brand/footer links. The linked commerce layer extends this into `/products` (room-filtered catalogue), `/products/[id]` (gallery, product detail, quantity, reviews and related furniture), `/cart`, and `/wishlist`. These routes use one furniture catalogue and the same local device preview state so product, cart and saved-piece actions stay connected.
 
 ## Visual language
 Warm Better Space editorial retail using the approved palette: chocolate #37291d frames the utility bar and footer, burgundy #461102 marks primary purchase and promotion moments, olive #5d5b35 carries secondary shopping controls, and cool oatmeal #d5d1bc supports service surfaces. White and warm white remain the dominant shopping canvas. Cormorant Garamond creates the elegant furniture-editorial display voice; DM Sans supports compact shopping UI. Natural daylight interiors, pale timber, soft linen, ceramics and greenery are used as the repeated identity motif.
@@ -42,5 +42,8 @@ Title, description, Open Graph metadata, semantic heading hierarchy and meaningf
 ## Deployment
 GitHub repository `aspireomedia/preview_furniture5`, Vercel project `preview5-furniture-store`, requested domain `preview5.aspireomedia.com`.
 
+## Error-state coverage
+A shared `ErrorExperience` provides short, branded recovery screens for routing, unavailable/timeout, payment, order, inventory, cart/search, validation/rate-limit, session/role, and product-upload states. Dynamic `/status/[state]` routes make the states independently testable; App Router `not-found.tsx`, `error.tsx`, and `global-error.tsx` prevent framework output from reaching customers. The component uses the existing burgundy decision action, olive supporting label, warm ivory canvas, Cormorant heading, and DM Sans UI copy. This is intentionally calm, with no decorative motion, so recovery decisions stay clear. All states explicitly say whether payment was made and give one primary next action.
+
 ## Exclusions
-No real inventory, price synchronization, account, checkout, payment processing, customer support workflow, or third-party tracking.
+No real inventory, price synchronization, account, checkout, payment processing, customer support workflow, or third-party tracking. Error routes demonstrate the UX contract only and do not claim that these integrations exist.

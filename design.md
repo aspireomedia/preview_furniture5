@@ -25,7 +25,7 @@ Dials: ENERGY 2 / RHYTHM 3 / MOTION 1. The hero and editorial dining banner are 
 Next.js 16, TypeScript, App Router, Tailwind CSS base plus component-focused CSS. Client interactivity is contained in `Storefront.tsx`. Page metadata is in `src/app/layout.tsx`; page composition uses focused Header, Hero, CategoryNavigation, CategoryGrid, ProductGrid, CollectionBanner, ServiceFeatures and Footer components.
 
 ## Data and integrations
-Static product/category data intended for preview only. Product controls update client state only. No backend, auth, checkout, external analytics, payment, or database connection is included.
+Static furniture catalogue data intended for preview only. Every PDP recommendation is selected by exact product type—not just by room—so sofa PDPs show sofas, desk PDPs show desks, dining-table PDPs show dining tables, and bed-frame PDPs show bed frames. Product controls update client state only. No backend, auth, checkout, external analytics, payment, or database connection is included.
 
 ## Security
 No credentials or private operational data in the app. No checkout or payment claims. User email newsletter control shows an honest local confirmation state only.

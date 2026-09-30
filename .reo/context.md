@@ -1,6 +1,6 @@
 ## State
 - Better Space furniture storefront is deployed and branded at preview5.aspireomedia.com.
-- A shared product catalogue now powers the homepage, `/products`, `/products/[id]`, `/cart`, and `/wishlist`; browser-local preview state keeps cart and saved items connected across these routes.
+- A shared product catalogue now powers the homepage, `/products`, `/products/[id]`, `/cart`, and `/wishlist`; browser-local preview state keeps cart and saved items connected across these routes. PDP recommendations are exact product-type matches (for example, sofa → sofas and desk → desks), never mixed room-level items.
 - The supplied ecommerce UI-kit Figma file informed only general commerce information architecture (collection, detail gallery, bag and wishlist flows); no reference imagery, copy, product names, or brand assets were used.
 - Local furniture/interior assets are stored under public/images.
 - Error-state coverage is implemented through the shared `ErrorExperience` component and `/status/[state]`: customer commerce, platform, session/admin and upload rejection states use the existing warm Better Space design tokens. App Router `not-found.tsx`, `error.tsx`, and `global-error.tsx` prevent raw framework error output.

@@ -46,6 +46,22 @@ Title, description, Open Graph metadata, semantic heading hierarchy and meaningf
 ## Deployment
 GitHub repository `aspireomedia/preview_furniture5-preview5` (renamed from `preview_furniture5` on 2026-09-30 per J Kal), Vercel project `preview5-furniture-store`, requested domain `preview5.aspireomedia.com`.
 
+## Premium storefront (2026-09-30)
+Preview 5 now serves two storefronts. `/` remains the existing Standard marketplace (RUMAIO-composition homepage, `Storefront.tsx`, `StoreSections.tsx`, `CommercePages.tsx`, `src/data/store.ts`) and is completely unmodified by this work.
+
+`/premium` is a new, isolated Premium storefront ported from the Preview 4 reference implementation (`/home/ubuntu/samples/aspire-furniture-v1`, a React/Vite/React-Router project) into Next.js App Router components. Its editorial section rhythm (hero carousel, benefit strip, category chips, Trending Now, Featured Collections, New Arrivals, brand philosophy statement, Accessible Luxury, Better Space Circle newsletter, footer) and PDP layout (gallery, rating, quantity, tabs, related pieces) follow that reference, restyled with the Preview 5 Better Space palette (chocolate `#37291d`, burgundy `#461102`, olive `#5d5b35`, oatmeal `#d5d1bc`) in place of Preview 4's amber/gold accent.
+
+Isolation:
+- Routes: `/premium`, `/premium/shop`, `/premium/collections`, `/premium/product/[slug]`, `/premium/about`, `/premium/contact`, `/premium/faq`, `/premium/cart`, `/premium/wishlist` — all under `src/app/premium/`.
+- Components: `src/components/premium/PremiumStore.tsx` (shell, header, footer, product card/rail, cart+wishlist hook). Never imported by Standard routes.
+- Styles: `src/app/premium/premium.css`, every selector scoped under `.premium-root`. Standard's `globals.css`/`homepage.css` untouched.
+- Data: `src/data/premium.ts` — a logically separate "Premium database" module (not a real DB; Preview 5 has no database of any kind for either storefront today, confirmed during inspection). Seeded once from Preview 5's own 100-product `src/data/store.ts` catalogue (same products, own records/ratings/reviews/slugs), so it can diverge from Standard going forward without touching Standard's array. J Kal approved this logical-separation approach over provisioning new infrastructure.
+- Client state: separate `localStorage` keys `premium-cart` / `premium-wishlist`, verified never colliding with Standard's `better-space-cart` / `better-space-wishlist`.
+- Accessible Luxury section: seeded catalogue only had 2 products under Rp500.000, so the section honestly retitles to "Under Rp900.000" when the strict threshold doesn't have enough real inventory, rather than fabricating prices.
+- FAQ content follows only what the project actually supports (client-side preview cart/wishlist, no live payment) — no invented delivery-time or warranty guarantees.
+
+Verified: production build passes; all 9 Premium routes plus Standard's 6 routes return HTTP 200 with zero horizontal overflow and zero console errors at 1440/768/390px; Premium nav/footer links resolve only within `/premium`; Standard's add-to-cart and localStorage keys remain unaffected by Premium's existence.
+
 ## Error-state coverage
 A shared `ErrorExperience` provides short, branded recovery screens for routing, unavailable/timeout, payment, order, inventory, cart/search, validation/rate-limit, session/role, and product-upload states. Dynamic `/status/[state]` routes make the states independently testable; App Router `not-found.tsx`, `error.tsx`, and `global-error.tsx` prevent framework output from reaching customers. The component uses the existing burgundy decision action, olive supporting label, warm ivory canvas, Cormorant heading, and DM Sans UI copy. This is intentionally calm, with no decorative motion, so recovery decisions stay clear. All states explicitly say whether payment was made and give one primary next action.
 

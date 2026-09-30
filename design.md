@@ -40,7 +40,7 @@ Semantic landmarks, descriptive image alt text, skip link, labeled icon controls
 Title, description, Open Graph metadata, semantic heading hierarchy and meaningful alt labels are included.
 
 ## Deployment
-GitHub repository `aspireomedia/preview_furniture5`, Vercel project `preview5-furniture-store`, requested domain `preview5.aspireomedia.com`.
+GitHub repository `aspireomedia/preview_furniture5-preview5` (renamed from `preview_furniture5` on 2026-09-30 per J Kal), Vercel project `preview5-furniture-store`, requested domain `preview5.aspireomedia.com`.
 
 ## Error-state coverage
 A shared `ErrorExperience` provides short, branded recovery screens for routing, unavailable/timeout, payment, order, inventory, cart/search, validation/rate-limit, session/role, and product-upload states. Dynamic `/status/[state]` routes make the states independently testable; App Router `not-found.tsx`, `error.tsx`, and `global-error.tsx` prevent framework output from reaching customers. The component uses the existing burgundy decision action, olive supporting label, warm ivory canvas, Cormorant heading, and DM Sans UI copy. This is intentionally calm, with no decorative motion, so recovery decisions stay clear. All states explicitly say whether payment was made and give one primary next action.

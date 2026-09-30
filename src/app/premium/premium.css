@@ -3,7 +3,7 @@
    burgundy #461102, olive #5d5b35, oatmeal #d5d1bc — the approved Preview 5 Premium set. */
 .premium-root{--p-choc:#37291d;--p-burgundy:#461102;--p-olive:#5d5b35;--p-oatmeal:#d5d1bc;--p-ink:#2a2018;--p-muted:#6b6156;--p-line:#e6e0d3;--p-ivory:#fffdf9;--p-cream:#f8f5ee;background:var(--p-ivory);color:var(--p-ink);font-family:var(--font-sans),Arial,sans-serif;}
 .premium-root *{box-sizing:border-box;}
-.premium-root a{color:inherit;text-decoration:none;}
+:where(.premium-root) a{color:inherit;text-decoration:none;}
 .premium-root button,.premium-root input,.premium-root select,.premium-root textarea{font:inherit;}
 .premium-root button{cursor:pointer;}
 .premium-shell{width:min(1240px,calc(100% - 48px));margin-inline:auto;}

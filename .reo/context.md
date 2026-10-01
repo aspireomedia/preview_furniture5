@@ -19,6 +19,10 @@
 - Removed only from the homepage: circular room-icon strip, equal 3×2 category grid, static product tabs, 25-card grid, oversized dining panel. Full 100-product index remains `/products`.
 - Verified production-build browser QA: desktop/mobile no overflow or console errors; 4 weekly cards, mosaic 3+2, 10 recommended cards, zero broken images after lazy-scroll. `/products`, PDP, cart and wishlist all remained HTTP 200 with their existing H1s/layout composition. Working anchor/routing checks: hero Shop Now → `#recommended`, sale nav → `#weekly`, promo → dining products, View All → `/products`, footer categories → respective catalogue routes, add-to-cart increments the badge.
 
+## Premium homepage positioning (2026-10-01)
+- `/premium` sequence is intentional: Hero → benefits → category chips → **Tentang Better Space** → **Sedang Populer** → **Koleksi Pilihan** → **Produk Terbaru** → **FAQ** → **Di Bawah Rp900.000** → newsletter → footer.
+- About and FAQ are independent sections and must never be adjacent or duplicated. About uses `rgba(93,91,53,.8)` and FAQ uses `rgba(70,17,2,.8)`, with bold, fully opaque oatmeal (`#d5d1bc`) typography.
+
 ## Constraints
 - Approved Better Space palette: chocolate #37291d, burgundy #461102, olive #5d5b35, cool oatmeal #d5d1bc.
 - No temporary Figma asset URLs in production.

@@ -157,9 +157,12 @@
 .premium-footer-brand p{margin-top:14px;color:rgba(255,253,249,.55);font-size:12px;line-height:1.6;max-width:280px;}
 .premium-footer-grid h3{margin:0 0 18px;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,253,249,.72);}
 .premium-footer-grid>div:not(.premium-footer-brand){display:flex;flex-direction:column;gap:11px;}
+/* Every text line in the footer columns matches the sibling menu links (12px) — the
+   address, phone and email previously fell back to the UA default 16px. */
+.premium-footer-grid>div:not(.premium-footer-brand) p{margin:0;font-size:12px;line-height:1.6;color:rgba(255,253,249,.55);}
 .premium-footer-grid a{font-size:12px;color:rgba(255,253,249,.55);}
 .premium-footer-grid a:hover{color:var(--p-oatmeal);}
-.premium-footer-address{margin:0;}
+.premium-footer-address{margin:0;font-size:12px;line-height:1.6;color:rgba(255,253,249,.55);}
 .premium-footer-bottom{border-top:1px solid rgba(255,253,249,.12);min-height:58px;display:flex;align-items:center;justify-content:space-between;gap:1rem;font-size:10px;color:rgba(255,253,249,.4);}
 .premium-footer-bottom div{display:flex;gap:1.3rem;}
 .premium-footer-bottom a:hover{color:var(--p-oatmeal);}

@@ -48,3 +48,15 @@ Bottom overscroll exposed the UA default white below the footer because `html` h
 - Per-route override for premium: `src/app/premium/layout.tsx` injects `:root{--page-overscroll-bg:#37291d}` (premium footer `--p-choc`).
 - `.commerce-frame` / `.premium-frame` already give the flex column + `main{flex:1}` page shell, so short pages pin the footer to the viewport bottom.
 - Rule: the root canvas must ALWAYS equal the footer colour of the storefront/section it serves. If a footer colour changes, update `--page-overscroll-bg` for that route.
+
+## Page-size per grid column count (2026-10)
+Catalogue items-per-page must be divisible by the DESKTOP column count so pages end on
+complete rows. Two sets now live in src/lib/paginate.ts and each surface picks one:
+  - CATALOGUE_PAGE_SIZES_3COL = [18,36,60,90]  (default 18) -> 3-col grids
+  - CATALOGUE_PAGE_SIZES_4COL = [20,40,60,100] (default 20) -> 4-col grids
+Wired: /products (Standard) = 3COL; /premium/shop (Premium) = 4COL.
+PageSizeSelect takes an `options` prop and parsePageSizeParam takes an options list, so a
+surface can never adopt the other layout's sizes from a stale shared link.
+Grid truth (desktop): .catalogue-grid=3col, .premium-grid=4col. Do NOT assume the page-size
+list from the route name — check the grid's computed column count.
+Also fixed: Standard sidebar category links hardcoded limit=25 (not a valid size) -> now just ?page=1.

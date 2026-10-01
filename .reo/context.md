@@ -23,6 +23,18 @@
 - `/premium` sequence is intentional: Hero → benefits → category chips → **Tentang Better Space** → **Sedang Populer** → **Koleksi Pilihan** → **Produk Terbaru** → **FAQ** → **Di Bawah Rp900.000** → newsletter → footer.
 - About and FAQ are independent sections and must never be adjacent or duplicated. About uses `rgba(93,91,53,.8)` and FAQ uses `rgba(70,17,2,.8)`, with bold, fully opaque oatmeal (`#d5d1bc`) typography.
 
+## Product-listing pagination (2026-10-01)
+- J Kal's standing rule: **any page/section intended to display many catalogue products must paginate** — not just one named route. Applied to every long product listing in both Preview5 and Preview6, standard + premium.
+- Surfaces covered: P5 `/products` (all rooms + each category), P5 `/premium/shop`, P6 `/products`, P6 `/premium/[room]`.
+- Shared pieces (same file copied into both repos): `src/lib/paginate.ts` (pure `paginate<T>()`, `PAGE_SIZE_OPTIONS = [25,50,100]`, `parsePageParam`, `parsePageSizeParam`, `buildPageList` collapsing) and `src/components/Pagination.tsx` (`ListingRangeLabel`, `PageSizeSelect`, `Pagination` with prev/next, collapsed numbers, mobile `page / total` indicator, optional scroll-to-listing).
+- Ordering is always **filter → sort → count → slice**; the range label and page count are computed from the filtered set, never the raw catalogue.
+- URL is the single source of truth for `page` / `limit` (and category where applicable) so filtered+paged views are shareable deep links. Selection state is a local mirror adopted through the **render-time adjustment pattern** (`if (seenUrl.x !== urlX) { setSeenUrl(...); setState(...) }`), never a `useEffect` — an effect here causes both cascading-render lint errors and stale-`searchParams` clobbering.
+- **Pitfall (cost real debugging time):** a reset-key derived from the *local* category mirror instead of the already-committed `urlCategory` fires mid-commit against a stale `searchParams` identity, silently reverting a category selection and writing a URL without `category=`. Key the reset off `urlCategory`, and have the category-picking handler keep the `seenUrl` baseline in step.
+- **Pitfall:** passing `onPageChange={setPage}` (state only) leaves the URL stale — every paging control must route through the same `pushUrl` writer.
+- **Pitfall:** in both `src/app/globals.css` (P5) and `src/app/furniture/furniture.css` (P6) an unscoped `flex-direction:column` rule (intended for mobile) overrode the desktop toolbar row. Mobile toolbar stacking now lives inside `@media (max-width:760px/850px)`.
+- Native `<select>` chevrons were replaced with a themed inline-SVG chevron + hover/focus ring per each site's palette (P5 burgundy/chocolate, P6 teal, both premium oatmeal/brown), and duplicate `.page-size-select` rules that fought the cascade were removed.
+- Verified with three Playwright suites (137 assertions, 0 failures): core paging behaviour, filter/sort interaction with per-category counts, and a **full-sweep integrity check** asserting every product appears exactly once with no skips at 25/50/100 per page on all four surfaces. Mobile checked for zero horizontal overflow.
+
 ## Constraints
 - Approved Better Space palette: chocolate #37291d, burgundy #461102, olive #5d5b35, cool oatmeal #d5d1bc.
 - No temporary Figma asset URLs in production.

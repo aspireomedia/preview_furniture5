@@ -4,10 +4,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { ChevronLeft, Heart, Minus, Plus, ShoppingBag, Star, Trash2 } from "lucide-react";
 import { useEffect, useMemo, useState } from "react";
+import { useRouter, usePathname, useSearchParams } from "next/navigation";
 import { Footer } from "@/components/StoreSections";
 import { Header } from "@/components/Header";
 import { AddToCartButton } from "@/components/AddToCartButton";
 import { Product, products, productsForCategory, relatedProducts } from "@/data/store";
+import { Pagination, PageSizeSelect, ListingRangeLabel } from "@/components/Pagination";
+import { paginate, PageSize, parsePageParam, parsePageSizeParam } from "@/lib/paginate";
 
 type CartLine = { id: string; quantity: number };
 const CART_KEY = "better-space-cart";
@@ -41,11 +44,38 @@ function ProductCard({ product, wishlisted, onWish, onCart }: { product: Product
 
 const roomLabels: Record<string, string> = { "living-room": "Ruang Keluarga", bedroom: "Kamar Tidur", "dining-room": "Ruang Makan", "home-office": "Ruang Kerja", storage: "Penyimpanan", lighting: "Pencahayaan", "home-decor": "Dekorasi Rumah" };
 
-export function CollectionPage({ category }: { category?: string }) {
+export function CollectionPage({ room }: { room?: string }) {
   const store = useStore(); const [sort, setSort] = useState("featured");
-  const collection = useMemo(() => [...productsForCategory(category)].sort((a,b) => sort === "low" ? a.numericPrice - b.numericPrice : sort === "high" ? b.numericPrice-a.numericPrice : 0), [category, sort]);
-  const title = category ? (productsForCategory(category)[0]?.category || "Furniture") : "Semua Furniture";
-  return <PageFrame cartCount={store.cartCount}><main><Crumbs current={title}/><section className="shell collection-page"><div className="collection-intro"><p className="eyebrow">KOLEKSI BETTER SPACE</p><h1>{title}</h1><p>Furniture untuk ruang yang terasa tenang, fungsional, dan benar-benar milik Anda.</p></div><div className="catalogue-layout"><aside className="catalogue-sidebar"><b>Belanja berdasarkan ruang</b>{["all","living-room","bedroom","dining-room","home-office","storage","lighting","home-decor"].map((slug) => <Link key={slug} className={slug === (category || "all") ? "selected" : ""} href={slug === "all" ? "/products" : `/products?room=${slug}`}>{slug === "all" ? "Semua furniture" : roomLabels[slug]}</Link>)}</aside><div><div className="catalogue-toolbar"><span>{collection.length} produk untuk rumah Anda</span><label>Urutkan <select value={sort} onChange={(event) => setSort(event.target.value)}><option value="featured">Pilihan</option><option value="low">Harga: rendah ke tinggi</option><option value="high">Harga: tinggi ke rendah</option></select></label></div><div className="catalogue-grid">{collection.map((product) => <ProductCard key={product.id} product={product} wishlisted={store.wishlist.includes(product.id)} onWish={() => store.toggleWish(product.id)} onCart={() => store.add(product.id)}/>)}</div></div></div></section></main></PageFrame>;
+  const router = useRouter(); const pathname = usePathname(); const searchParams = useSearchParams();
+  // URL is the single source of truth for page/limit so any view is a shareable deep link.
+  const urlPage = parsePageParam(searchParams.get("page"));
+  const urlPageSize = parsePageSizeParam(searchParams.get("limit"));
+  const [page, setPage] = useState(urlPage);
+  const [pageSize, setPageSize] = useState<PageSize>(urlPageSize);
+  const [seenUrl, setSeenUrl] = useState({ room: room ?? "all", page: urlPage, pageSize: urlPageSize });
+  if (seenUrl.room !== (room ?? "all") || seenUrl.page !== urlPage || seenUrl.pageSize !== urlPageSize) {
+    const roomChanged = seenUrl.room !== (room ?? "all");
+    setSeenUrl({ room: room ?? "all", page: urlPage, pageSize: urlPageSize });
+    setPageSize(urlPageSize);
+    setPage(roomChanged ? 1 : urlPage);
+  }
+  const pushUrl = (nextPage: number, nextPageSize: PageSize) => {
+    setSeenUrl({ room: room ?? "all", page: nextPage, pageSize: nextPageSize });
+    setPage(nextPage); setPageSize(nextPageSize);
+    const params = new URLSearchParams();
+    if (room) params.set("room", room);
+    params.set("page", String(nextPage)); params.set("limit", String(nextPageSize));
+    router.replace(`${pathname}?${params.toString()}`, { scroll: false });
+  };
+  const collection = useMemo(() => [...productsForCategory(room)].sort((a,b) => sort === "low" ? a.numericPrice - b.numericPrice : sort === "high" ? b.numericPrice-a.numericPrice : 0), [room, sort]);
+  const { pageItems, total, totalPages, safePage, start, end } = useMemo(() => paginate(collection, page, pageSize), [collection, page, pageSize]);
+  // Sort changes and out-of-range pages (?page=99) both resolve to a valid page and are
+  // written back to the URL, so a shared link can never reproduce a blank grid.
+  const [resetKey, setResetKey] = useState(`${room ?? "all"}|${sort}`);
+  if (resetKey !== `${room ?? "all"}|${sort}`) { setResetKey(`${room ?? "all"}|${sort}`); pushUrl(1, pageSize); }
+  else if (safePage !== page) pushUrl(safePage, pageSize);
+  const title = room ? (roomLabels[room] || productsForCategory(room)[0]?.category || "Furniture") : "Semua Furniture";
+  return <PageFrame cartCount={store.cartCount}><main><Crumbs current={title}/><section id="collection-listing" className="shell collection-page"><div className="collection-intro"><p className="eyebrow">KOLEKSI BETTER SPACE</p><h1>{title}</h1><p>Furniture untuk ruang yang terasa tenang, fungsional, dan benar-benar milik Anda.</p></div><div className="catalogue-layout"><aside className="catalogue-sidebar"><b>Belanja berdasarkan ruang</b>{["all","living-room","bedroom","dining-room","home-office","storage","lighting","home-decor"].map((slug) => <Link key={slug} className={slug === (room || "all") ? "selected" : ""} href={slug === "all" ? "/products?page=1&limit=25" : `/products?room=${slug}&page=1&limit=25`} scroll={false}>{slug === "all" ? "Semua furniture" : roomLabels[slug]}</Link>)}</aside><div><div className="catalogue-toolbar"><ListingRangeLabel total={total} start={start} end={end}/><div className="catalogue-toolbar-controls"><PageSizeSelect pageSize={pageSize} onPageSizeChange={(size) => pushUrl(1, size)}/><label>Urutkan <select value={sort} onChange={(event) => setSort(event.target.value)}><option value="featured">Pilihan</option><option value="low">Harga: rendah ke tinggi</option><option value="high">Harga: tinggi ke rendah</option></select></label></div></div><div className="catalogue-grid">{pageItems.map((product) => <ProductCard key={product.id} product={product} wishlisted={store.wishlist.includes(product.id)} onWish={() => store.toggleWish(product.id)} onCart={() => store.add(product.id)}/>)}</div><Pagination page={safePage} totalPages={totalPages} onPageChange={(next) => pushUrl(next, pageSize)} scrollTargetId="collection-listing"/></div></div></section></main></PageFrame>;
 }
 
 export function ProductPage({ product }: { product: Product }) {

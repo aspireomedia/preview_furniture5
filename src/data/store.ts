@@ -13,22 +13,22 @@ export type Product = {
 };
 
 export const roomCategories = [
-  { label: "Living Room", icon: "sofa", slug: "living-room" },
-  { label: "Bedroom", icon: "bed", slug: "bedroom" },
-  { label: "Dining Room", icon: "table", slug: "dining-room" },
-  { label: "Home Office", icon: "desk", slug: "home-office" },
-  { label: "Storage", icon: "cabinet", slug: "storage" },
-  { label: "Lighting", icon: "lamp", slug: "lighting" },
-  { label: "Home Decor", icon: "vase", slug: "home-decor" },
+  { label: "Ruang Keluarga", icon: "sofa", slug: "living-room" },
+  { label: "Kamar Tidur", icon: "bed", slug: "bedroom" },
+  { label: "Ruang Makan", icon: "table", slug: "dining-room" },
+  { label: "Ruang Kerja", icon: "desk", slug: "home-office" },
+  { label: "Penyimpanan", icon: "cabinet", slug: "storage" },
+  { label: "Pencahayaan", icon: "lamp", slug: "lighting" },
+  { label: "Dekorasi Rumah", icon: "vase", slug: "home-decor" },
 ];
 
 export const categories = [
-  { name: "Living Room", slug: "living-room", description: "Sofa, lounge chair, coffee table and more", image: "/images/living.jpg" },
-  { name: "Bedroom", slug: "bedroom", description: "Bed frame, mattress, wardrobe and more", image: "/images/bedroom.jpg" },
-  { name: "Dining Room", slug: "dining-room", description: "Dining table, dining chair, sideboard and more", image: "/images/dining.jpg" },
-  { name: "Home Office", slug: "home-office", description: "Work desk, office chair, bookshelf and more", image: "/images/office.jpg" },
-  { name: "Storage", slug: "storage", description: "Cabinet, rack, organizer and more", image: "/images/storage.jpg" },
-  { name: "Home Decor", slug: "home-decor", description: "Lighting, mirror, rug, decoration and more", image: "/images/decor.jpg" },
+  { name: "Ruang Keluarga", slug: "living-room", description: "Sofa, kursi santai, meja kopi, dan lainnya", image: "/images/living.jpg" },
+  { name: "Kamar Tidur", slug: "bedroom", description: "Rangka tempat tidur, matras, lemari, dan lainnya", image: "/images/bedroom.jpg" },
+  { name: "Ruang Makan", slug: "dining-room", description: "Meja makan, kursi makan, sideboard, dan lainnya", image: "/images/dining.jpg" },
+  { name: "Ruang Kerja", slug: "home-office", description: "Meja kerja, kursi kantor, rak buku, dan lainnya", image: "/images/office.jpg" },
+  { name: "Penyimpanan", slug: "storage", description: "Kabinet, rak, organizer, dan lainnya", image: "/images/storage.jpg" },
+  { name: "Dekorasi Rumah", slug: "home-decor", description: "Lampu, cermin, karpet, dekorasi, dan lainnya", image: "/images/decor.jpg" },
 ];
 
 export const products: Product[] = [
@@ -134,6 +134,7 @@ export const products: Product[] = [
   { id: "mirror-nila-octagon", name: "Nila Octagon Mirror", price: "Rp 890.000", numericPrice: 890000, image: "https://images.pexels.com/photos/14870469/pexels-photo-14870469.jpeg?auto=compress&cs=tinysrgb&h=650&w=940", category: "Home Decor", productType: "Mirror", material: "Solid wood frame, silver mirror glass", dimensions: "Ø 70 × D 3 cm", description: "An eight-sided mirror with a wide wood frame, made as a focal piece above a dresser or entry table." },
 ];
 export function productById(id: string) { return products.find((product) => product.id === id); }
-export function productsForCategory(slug?: string) { if (!slug || slug === "all") return products; const category = roomCategories.find((item) => item.slug === slug)?.label; return category ? products.filter((product) => product.category === category) : products; }
+const categorySourceNames: Record<string, string> = { "living-room": "Living Room", bedroom: "Bedroom", "dining-room": "Dining Room", "home-office": "Home Office", storage: "Storage", lighting: "Lighting", "home-decor": "Home Decor" };
+export function productsForCategory(slug?: string) { if (!slug || slug === "all") return products; const category = categorySourceNames[slug]; return category ? products.filter((product) => product.category === category) : products; }
 export function relatedProducts(product: Product) { return products.filter((item) => item.id !== product.id && item.productType === product.productType).slice(0, 4); }
-export const navLinks = [["Home", "/"], ["Products", "/products"], ["Rooms", "/products#rooms"], ["Inspiration", "/#inspiration"], ["About Us", "/#about"], ["Contact", "/#contact"]] as const;
+export const navLinks = [["Beranda", "/"], ["Produk", "/products"], ["Ruangan", "/products#rooms"], ["Inspirasi", "/#inspiration"], ["Tentang Kami", "/#about"], ["Kontak", "/#contact"]] as const;

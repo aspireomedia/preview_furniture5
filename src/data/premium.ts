@@ -130,13 +130,13 @@ export function premiumProductsForCategory(slug?: string) { if (!slug || slug ==
 export function premiumRelatedProducts(product: PremiumProduct) { return premiumProducts.filter((item) => item.id !== product.id && item.productType === product.productType).slice(0, 3); }
 
 export const premiumCategories = [
-  { id: "living-room", name: "Living Room", count: 28 },
-  { id: "bedroom", name: "Bedroom", count: 23 },
-  { id: "dining-room", name: "Dining Room", count: 11 },
-  { id: "home-office", name: "Home Office", count: 11 },
-  { id: "lighting", name: "Lighting", count: 5 },
-  { id: "storage", name: "Storage", count: 12 },
-  { id: "home-decor", name: "Home Decor", count: 10 },
+  { id: "living-room", name: "Ruang Keluarga", count: 28 },
+  { id: "bedroom", name: "Kamar Tidur", count: 23 },
+  { id: "dining-room", name: "Ruang Makan", count: 11 },
+  { id: "home-office", name: "Ruang Kerja", count: 11 },
+  { id: "lighting", name: "Pencahayaan", count: 5 },
+  { id: "storage", name: "Penyimpanan", count: 12 },
+  { id: "home-decor", name: "Dekorasi Rumah", count: 10 },
 ];
 
 // Featured Collections: editorial groupings mapped onto real Premium categories, each backed by a real category filter (not a fake curated set).
@@ -147,16 +147,16 @@ export const premiumCollections = [
 ];
 
 export const premiumHeroSlides = [
-  { id: 1, image: "/images/hero.jpg", eyebrow: "New Collection", title: "Curated Living", subtitle: "Beautiful pieces that transform your space into a sanctuary of refined elegance.", cta: "Explore Collection", href: "/premium/shop" },
-  { id: 2, image: "/images/bedroom.jpg", eyebrow: "Bedroom Edit", title: "Serene Retreat", subtitle: "Considered bed frames and bedroom pieces for slower mornings and better rest.", cta: "Shop Bedroom", href: "/premium/shop?category=bedroom" },
-  { id: 3, image: "/images/dining.jpg", eyebrow: "Dining Edit", title: "Dining, Redefined", subtitle: "Furniture that turns a meal into a gathering worth lingering over.", cta: "Shop Dining", href: "/premium/shop?category=dining-room" },
+  { id: 1, image: "/images/hero.jpg", eyebrow: "KOLEKSI TERBARU", title: "Curated Living", subtitle: "Pilihan furniture yang mengubah ruang Anda menjadi tempat pulang yang lebih nyaman.", cta: "Lihat Koleksi", href: "/premium/shop" },
+  { id: 2, image: "/images/bedroom.jpg", eyebrow: "PILIHAN KAMAR TIDUR", title: "Serene Retreat", subtitle: "Ranjang dan furniture kamar yang dipilih untuk pagi yang lebih tenang dan istirahat yang lebih baik.", cta: "Belanja Kamar Tidur", href: "/premium/shop?category=bedroom" },
+  { id: 3, image: "/images/dining.jpg", eyebrow: "PILIHAN RUANG MAKAN", title: "Dining, Redefined", subtitle: "Furniture yang membuat waktu makan menjadi momen berkumpul yang lebih bermakna.", cta: "Belanja Ruang Makan", href: "/premium/shop?category=dining-room" },
 ];
 
 export const premiumNavLinks = [
-  ["Home", "/premium"],
-  ["Shop", "/premium/shop"],
-  ["Collections", "/premium/collections"],
-  ["About", "/premium/about"],
-  ["Contact", "/premium/contact"],
+  ["Beranda", "/premium"],
+  ["Belanja", "/premium/shop"],
+  ["Koleksi", "/premium/collections"],
+  ["Tentang Kami", "/premium/about"],
+  ["Kontak", "/premium/contact"],
   ["FAQ", "/premium/faq"],
 ] as const;

@@ -120,31 +120,29 @@
 .premium-faq-promo-inner>div>p{margin:0 0 1.5rem;font-size:15px;font-weight:600;line-height:1.7;color:var(--p-oatmeal);}
 .premium-faq-promo a{display:inline-flex;align-items:center;gap:.55rem;background:var(--p-oatmeal);color:var(--p-choc);padding:.9rem 1.25rem;font-size:13px;font-weight:700;}
 
-/* Partner strip: compact burgundy band between product sections, pearl grey (oatmeal token) circles. */
-.premium-partners{background:var(--p-burgundy);padding:28px 0;}
+/* Partner strip: compact oatmeal band between product sections, real-color client logos, no badges/circles. */
+.premium-partners{background:var(--p-oatmeal);padding:28px 0;}
 .premium-partners-inner{text-align:center;}
-.premium-partners-eyebrow{margin:0 0 .4rem;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--p-oatmeal);opacity:.75;}
-.premium-partners-heading{margin:0 0 18px;font-family:var(--font-display),Georgia,serif;font-size:22px;font-weight:700;letter-spacing:-.02em;color:var(--p-oatmeal);}
-.premium-partners-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px;}
-.premium-partner-circle{width:64px;height:64px;border-radius:50%;background:var(--p-oatmeal);display:grid;place-items:center;flex:none;}
-.premium-partner-logo{display:block;width:70%;height:70%;background-color:var(--p-choc);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain;}
+.premium-partners-heading{margin:0 0 18px;font-family:var(--font-display),Georgia,serif;font-size:20px;font-weight:700;letter-spacing:-.01em;color:var(--p-choc);}
+.premium-partners-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:36px;}
+.premium-partner-logo{display:block;height:34px;width:auto;max-width:140px;object-fit:contain;flex:none;}
 @media (max-width:640px){
-  .premium-partners{padding:24px 0;}
-  .premium-partner-circle{width:52px;height:52px;}
-  .premium-partners-row{gap:14px;}
+  .premium-partners{padding:22px 0;}
+  .premium-partners-row{gap:22px;}
+  .premium-partner-logo{height:26px;max-width:100px;}
 }
 
-/* Newsletter */
-.premium-newsletter{background:var(--p-choc);color:#fffdf9;padding:84px 0;}
+/* Newsletter / Better Space Circle CTA card: olive, kept visually distinct from the chocolate footer below it. */
+.premium-newsletter{background:var(--p-olive);color:var(--p-oatmeal);padding:84px 0;}
 .premium-newsletter-inner{max-width:520px;margin:0 auto;text-align:center;}
 .premium-newsletter p.eyebrow{margin:0 0 1rem;color:var(--p-oatmeal);font-size:11px;font-weight:700;letter-spacing:.28em;text-transform:uppercase;}
-.premium-newsletter h2{margin:0 0 1rem;font-family:var(--font-display),Georgia,serif;font-size:clamp(1.8rem,3.4vw,2.4rem);font-weight:600;}
-.premium-newsletter p.body{margin:0 0 1.8rem;color:rgba(255,253,249,.6);font-size:14px;line-height:1.65;}
+.premium-newsletter h2{margin:0 0 1rem;font-family:var(--font-display),Georgia,serif;font-size:clamp(1.8rem,3.4vw,2.4rem);font-weight:600;color:var(--p-oatmeal);}
+.premium-newsletter p.body{margin:0 0 1.8rem;color:rgba(213,209,188,.82);font-size:14px;line-height:1.65;}
 .premium-newsletter form{display:flex;gap:.7rem;}
-.premium-newsletter input{flex:1;min-width:0;border:1px solid rgba(255,253,249,.24);background:rgba(255,253,249,.08);color:#fff;padding:0 .9rem;height:46px;font-size:13px;}
-.premium-newsletter input::placeholder{color:rgba(255,253,249,.4);}
-.premium-newsletter button{border:0;background:var(--p-burgundy);color:#fff;padding:0 1.4rem;height:46px;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap;}
-.premium-newsletter-success{display:inline-flex;align-items:center;gap:.5rem;color:var(--p-oatmeal);font-size:14px;}
+.premium-newsletter input{flex:1;min-width:0;border:1px solid rgba(213,209,188,.4);background:rgba(213,209,188,.1);color:var(--p-oatmeal);padding:0 .9rem;height:46px;font-size:13px;}
+.premium-newsletter input::placeholder{color:rgba(213,209,188,.55);}
+.premium-newsletter button{border:0;background:var(--p-oatmeal);color:var(--p-choc);padding:0 1.4rem;height:46px;font-size:13px;font-weight:700;display:inline-flex;align-items:center;gap:.5rem;white-space:nowrap;}
+.premium-newsletter-success{display:inline-flex;align-items:center;gap:.5rem;color:var(--p-oatmeal);font-size:14px;font-weight:700;}
 
 /* Footer */
 .premium-footer{background:var(--p-choc);color:#fffdf9;}

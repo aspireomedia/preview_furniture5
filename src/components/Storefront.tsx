@@ -20,6 +20,7 @@ import {
   X,
 } from "lucide-react";
 import { products } from "@/data/store";
+import { AddToCartButton } from "@/components/AddToCartButton";
 
 const weeklyProducts = products.slice(0, 4);
 const productIds = [
@@ -110,7 +111,7 @@ export function Storefront() {
 }
 
 function ProductCard({ product, compact = false, liked, onLike, onCart }: { product: (typeof products)[number]; compact?: boolean; liked: boolean; onLike: (id: string) => void; onCart: (id: string) => void }) {
-  return <article className={`ruma-product-card ${compact ? "compact" : ""}`}><div className="ruma-product-image"><Link href={`/products/${product.id}`}><Image src={product.image} alt={product.name} fill sizes="(max-width: 850px) 50vw, 20vw"/></Link>{product.badge && <b className="ruma-badge">{product.badge === "New Arrival" ? "Produk Baru" : product.badge}</b>}<button type="button" aria-label={`Simpan ${product.name}`} aria-pressed={liked} onClick={() => onLike(product.id)}><Heart size={16} fill={liked ? "currentColor" : "none"}/></button></div><div className="ruma-product-copy"><p>{product.category}</p><h3><Link href={`/products/${product.id}`}>{product.name}</Link></h3><div className="ruma-product-price"><b>{product.price}</b><span><Star size={11} fill="currentColor"/> 4.8</span></div><button type="button" className="ruma-add" onClick={() => onCart(product.id)} aria-label={`Tambah ${product.name} ke keranjang`}><ShoppingCart size={15}/> Tambah ke Keranjang</button></div></article>;
+  return <article className={`ruma-product-card ${compact ? "compact" : ""}`}><div className="ruma-product-image"><Link href={`/products/${product.id}`}><Image src={product.image} alt={product.name} fill sizes="(max-width: 850px) 50vw, 20vw"/></Link>{product.badge && <b className="ruma-badge">{product.badge === "New Arrival" ? "Produk Baru" : product.badge}</b>}<button type="button" aria-label={`Simpan ${product.name}`} aria-pressed={liked} onClick={() => onLike(product.id)}><Heart size={16} fill={liked ? "currentColor" : "none"}/></button></div><div className="ruma-product-copy"><p>{product.category}</p><h3><Link href={`/products/${product.id}`}>{product.name}</Link></h3><div className="ruma-product-price"><b>{product.price}</b><span><Star size={11} fill="currentColor"/> 4.8</span></div><AddToCartButton className="ruma-add" onAdd={() => onCart(product.id)} icon /></div></article>;
 }
 
 function EditorialCard({ slug, title, copy, image, tone, position, wide }: { slug: string; title: string; copy: string; image: string; tone: string; position: string; wide?: boolean }) {

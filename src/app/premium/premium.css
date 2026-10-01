@@ -2,6 +2,9 @@
    .site-header / .footer / .product-card / global tokens. Palette: chocolate #37291d,
    burgundy #461102, olive #5d5b35, oatmeal #d5d1bc — the approved Preview 5 Premium set. */
 .premium-root{--p-choc:#37291d;--p-burgundy:#461102;--p-olive:#5d5b35;--p-oatmeal:#d5d1bc;--p-ink:#2a2018;--p-muted:#6b6156;--p-line:#e6e0d3;--p-ivory:#fffdf9;--p-cream:#f8f5ee;background:var(--p-ivory);color:var(--p-ink);font-family:var(--font-sans),Arial,sans-serif;}
+.premium-frame{min-height:100dvh;display:flex;flex-direction:column;}
+.premium-frame>main{flex:1;}
+.premium-frame>.premium-footer{flex:none;}
 .premium-root *{box-sizing:border-box;}
 :where(.premium-root) a{color:inherit;text-decoration:none;}
 .premium-root button,.premium-root input,.premium-root select,.premium-root textarea{font:inherit;}
@@ -79,7 +82,9 @@
 .premium-card-price{margin-bottom:10px;}
 .premium-card-price b{font-family:var(--font-display),Georgia,serif;font-size:16px;font-weight:600;}
 .premium-card-add{width:100%;border:1px solid #461102;background:#461102;color:#fff;height:40px;display:inline-flex;align-items:center;justify-content:center;gap:.5rem;font-size:11px;font-weight:700;letter-spacing:.04em;transition:background .2s,color .2s,border-color .2s;}
-.premium-card-add:hover{border-color:#37291d;background:#37291d;color:#fff;}
+.premium-card-add:hover:not(:disabled){border-color:#37291d;background:#37291d;color:#fff;}
+.premium-card-add.is-added,.premium-add-to-cart.is-added{background:#5d5b35;border-color:#5d5b35;color:#fff;}
+.premium-card-add:disabled,.premium-add-to-cart:disabled{cursor:default;}
 
 /* Rails */
 .premium-rail{display:flex;gap:20px;overflow-x:auto;scrollbar-width:none;padding-bottom:8px;}
@@ -123,13 +128,13 @@
 /* Partner strip: compact oatmeal band between product sections, real-color client logos, no badges/circles. */
 .premium-partners{background:var(--p-oatmeal);padding:28px 0;}
 .premium-partners-inner{text-align:center;}
-.premium-partners-heading{margin:0 0 18px;font-family:var(--font-display),Georgia,serif;font-size:20px;font-weight:700;letter-spacing:-.01em;color:var(--p-choc);}
-.premium-partners-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:36px;}
-.premium-partner-logo{display:block;height:34px;width:auto;max-width:140px;object-fit:contain;flex:none;}
+.premium-partners-heading{margin:0 0 16px;font-family:var(--font-display),Georgia,serif;font-size:20px;font-weight:700;letter-spacing:-.01em;color:var(--p-choc);}
+.premium-partners-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:28px;}
+.premium-partner-logo{display:block;height:64px;width:auto;max-width:220px;object-fit:contain;flex:none;}
 @media (max-width:640px){
   .premium-partners{padding:22px 0;}
-  .premium-partners-row{gap:22px;}
-  .premium-partner-logo{height:26px;max-width:100px;}
+  .premium-partners-row{gap:16px;}
+  .premium-partner-logo{height:48px;max-width:150px;}
 }
 
 /* Newsletter / Better Space Circle CTA card: olive, kept visually distinct from the chocolate footer below it. */

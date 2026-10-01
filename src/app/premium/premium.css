@@ -120,6 +120,20 @@
 .premium-faq-promo-inner>div>p{margin:0 0 1.5rem;font-size:15px;font-weight:600;line-height:1.7;color:var(--p-oatmeal);}
 .premium-faq-promo a{display:inline-flex;align-items:center;gap:.55rem;background:var(--p-oatmeal);color:var(--p-choc);padding:.9rem 1.25rem;font-size:13px;font-weight:700;}
 
+/* Partner strip: compact burgundy band between product sections, pearl grey (oatmeal token) circles. */
+.premium-partners{background:var(--p-burgundy);padding:28px 0;}
+.premium-partners-inner{text-align:center;}
+.premium-partners-eyebrow{margin:0 0 .4rem;font-size:10px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--p-oatmeal);opacity:.75;}
+.premium-partners-heading{margin:0 0 18px;font-family:var(--font-display),Georgia,serif;font-size:22px;font-weight:700;letter-spacing:-.02em;color:var(--p-oatmeal);}
+.premium-partners-row{display:flex;flex-wrap:wrap;justify-content:center;align-items:center;gap:18px;}
+.premium-partner-circle{width:64px;height:64px;border-radius:50%;background:var(--p-oatmeal);display:grid;place-items:center;flex:none;}
+.premium-partner-logo{display:block;width:70%;height:70%;background-color:var(--p-choc);-webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;-webkit-mask-position:center;mask-position:center;-webkit-mask-size:contain;mask-size:contain;}
+@media (max-width:640px){
+  .premium-partners{padding:24px 0;}
+  .premium-partner-circle{width:52px;height:52px;}
+  .premium-partners-row{gap:14px;}
+}
+
 /* Newsletter */
 .premium-newsletter{background:var(--p-choc);color:#fffdf9;padding:84px 0;}
 .premium-newsletter-inner{max-width:520px;margin:0 auto;text-align:center;}

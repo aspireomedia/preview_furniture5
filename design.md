@@ -62,6 +62,10 @@ Isolation:
 
 Verified: production build passes; all 9 Premium routes plus Standard's 6 routes return HTTP 200 with zero horizontal overflow and zero console errors at 1440/768/390px; Premium nav/footer links resolve only within `/premium`; Standard's add-to-cart and localStorage keys remain unaffected by Premium's existence.
 
+## Premium "Partner Kami" strip (2026-10-01)
+- Compact burgundy band (`--p-burgundy`, ~192px tall desktop) placed on `/premium` directly after Sedang Populer and before Koleksi Pilihan. Heading/eyebrow use the oatmeal token (`--p-oatmeal`, project's warm "pearl" neutral; there is no separate Pearl Grey token in Preview 5's palette). Five logos sit in identical oatmeal circles with a `#37291d` mask treatment for a consistent monochrome look.
+- Partner logos are REAL company logos, sourced from Wikimedia Commons (public-domain/text-logo entries: Summarecon Agung, Pakuwon Jati, Intiland, Sinar Mas Land, Agung Podomoro Land), saved under `public/images/partners/`. J Kal explicitly authorized using real Indonesian property-developer logos for this sample/preview site ("INI SAMPLE WEBSITE. PAKE LOGO REAL."). This is a non-production preview; no real partnership exists and none is implied beyond this instructed placement. Revisit before any real commercial launch.
+
 ## Error-state coverage
 A shared `ErrorExperience` provides short, branded recovery screens for routing, unavailable/timeout, payment, order, inventory, cart/search, validation/rate-limit, session/role, and product-upload states. Dynamic `/status/[state]` routes make the states independently testable; App Router `not-found.tsx`, `error.tsx`, and `global-error.tsx` prevent framework output from reaching customers. The component uses the existing burgundy decision action, olive supporting label, warm ivory canvas, Cormorant heading, and DM Sans UI copy. This is intentionally calm, with no decorative motion, so recovery decisions stay clear. All states explicitly say whether payment was made and give one primary next action.
 

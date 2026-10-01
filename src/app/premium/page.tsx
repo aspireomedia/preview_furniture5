@@ -19,6 +19,13 @@ const newArrivals = [...premiumProducts.filter((product) => product.badge === "N
 const underBudget = premiumProducts.filter((product) => product.numericPrice < 500000);
 const accessibleLuxuryProducts = underBudget.length >= 4 ? underBudget : premiumProducts.filter((product) => product.numericPrice < 900000).slice(0, 8);
 const accessibleLuxuryTitle = underBudget.length >= 4 ? "Di Bawah Rp500.000" : "Di Bawah Rp900.000";
+const partners = [
+  { id: "summarecon", name: "Summarecon Agung", logo: "/images/partners/summarecon.svg" },
+  { id: "pakuwon", name: "Pakuwon Group", logo: "/images/partners/pakuwon.svg" },
+  { id: "intiland", name: "Intiland", logo: "/images/partners/intiland.svg" },
+  { id: "sinarmasland", name: "Sinar Mas Land", logo: "/images/partners/sinarmasland.png" },
+  { id: "agungpodomoro", name: "Agung Podomoro Land", logo: "/images/partners/agungpodomoro.svg" },
+];
 
 export default function PremiumHome() {
   const store = usePremiumStore();
@@ -44,6 +51,9 @@ export default function PremiumHome() {
     <section className="premium-about-home"><div className="premium-shell premium-about-home-grid"><div><p className="eyebrow">TENTANG BETTER SPACE</p><h2>Better Space.<br/><em>Better Living.</em></h2><Link href="/premium/about" className="premium-about-link">Lihat Selengkapnya <ChevronRight size={15}/></Link></div><div className="premium-about-story"><p>Better Space lahir dari gagasan sederhana bahwa kualitas hidup sering kali dimulai dari ruang yang kita tempati.</p><p>Furniture bukan sekadar pengisi ruangan. Bentuk, fungsi, kenyamanan, dan penataannya memengaruhi cara kita beristirahat, bekerja, berkumpul, dan menjalani hari.</p><div className="premium-about-highlights"><span>Tempat istirahat</span><span>Pusat kebersamaan</span><span>Ruang untuk bertumbuh</span></div><div className="premium-about-essence"><b>ESENSI MEREK</b><span>Perbaikan</span><span>Fungsi</span><span>Kenyamanan</span><span>Hidup Modern</span></div><p className="premium-about-tagline">Make Space Better.<br/>Better Space. Better Living.</p></div></div></section>
 
     <section className="premium-section"><div className="premium-shell"><SectionHeading eyebrow="Pilihan Favorit" title="Sedang Populer"/><div className="premium-grid">{trendingDisplay.slice(0, 4).map((product) => <PremiumProductCard key={product.id} product={product} wishlisted={store.wishlist.includes(product.id)} onWishlist={store.toggleWishlist} onAdd={store.add} />)}</div></div></section>
+
+    <section className="premium-partners"><div className="premium-shell premium-partners-inner"><p className="premium-partners-eyebrow">Perkantoran &amp; Developer Residential</p><h2 className="premium-partners-heading">Partner Kami</h2><div className="premium-partners-row">{partners.map((partner) => <div className="premium-partner-circle" key={partner.id} title={partner.name}><span className="premium-partner-logo" role="img" aria-label={partner.name} style={{ WebkitMaskImage: `url(${partner.logo})`, maskImage: `url(${partner.logo})` }}/></div>)}</div></div></section>
+
     <section className="premium-section" style={{ background: "var(--p-cream)" }}><div className="premium-shell"><SectionHeading eyebrow="Pilihan Untuk Anda" title="Koleksi Pilihan"/><div className="premium-collections-grid">{premiumCollections.map((collection) => <Link key={collection.id} href={`/premium/shop?category=${collection.categorySlug}`} className="premium-collection-card"><Image src={collection.image} alt={collection.name} fill sizes="(max-width: 860px) 100vw, 33vw"/><div className="premium-collection-wash"/><div className="premium-collection-copy"><small>Lihat Koleksi</small><h3>{collection.name}</h3><p>{collection.description}</p><span>Lihat Koleksi <ChevronRight size={13}/></span></div></Link>)}</div></div></section>
     <section className="premium-section"><div className="premium-shell"><SectionHeading eyebrow="Baru Hadir" title="Produk Terbaru"/><div className="premium-rail">{newArrivals.map((product) => <div className="premium-rail-item" key={product.id}><PremiumProductCard product={product} wishlisted={store.wishlist.includes(product.id)} onWishlist={store.toggleWishlist} onAdd={store.add}/></div>)}</div></div></section>
 

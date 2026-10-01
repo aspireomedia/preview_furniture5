@@ -8,5 +8,12 @@ export const metadata: Metadata = {
 };
 
 export default function PremiumLayout({ children }: { children: React.ReactNode }) {
-  return <>{children}</>;
+  return (
+    <>
+      {/* Premium footer is --p-choc (#37291d) — pin the root overscroll layer to it
+          explicitly so the premium storefront never depends on the standard default. */}
+      <style>{`:root{--page-overscroll-bg:#37291d}`}</style>
+      {children}
+    </>
+  );
 }

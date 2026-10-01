@@ -2,7 +2,15 @@
 
 :root { --brand-chocolate:#37291d; --brand-burgundy:#461102; --brand-olive:#5d5b35; --brand-oatmeal:#d5d1bc; --ink:var(--brand-chocolate); --primary:var(--brand-burgundy); --secondary:var(--brand-olive); --surface-soft:var(--brand-oatmeal); --ivory:#fffef9; --cream:#f7f5ee; --line:#e4dfd3; --muted:#625d55; }
 * { box-sizing:border-box; }
-html { scroll-behavior:smooth; }
+html {
+  scroll-behavior:smooth;
+  /* Bottom-overscroll / rubber-band fix: the root layer behind the document must match
+     the footer, otherwise the UA default (white) is exposed below the footer.
+     Applies ONLY to the root canvas — body and every page section keep their own
+     backgrounds, so no normal content is recoloured. */
+  background-color:var(--page-overscroll-bg, #37291d);
+  overscroll-behavior-y:none;
+}
 body { margin:0; background:var(--ivory); color:var(--ink); font-family:var(--font-sans),Arial,sans-serif; }
 a { color:inherit; text-decoration:none; }
 button,input { font:inherit; }

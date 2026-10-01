@@ -40,3 +40,11 @@
 - No temporary Figma asset URLs in production.
 - Client-only preview interactions: menu, search, wishlist and cart.
 - Commerce and staff error routes are demonstrable UI coverage for this frontend-only preview. They do not imply live payment, inventory, account or upload backends.
+## Page-shell / overscroll root background (2026-10)
+Bottom overscroll exposed the UA default white below the footer because `html` had no background. Fixed by setting the root canvas to the storefront footer colour via a variable:
+
+- `globals.css`: `html { background-color:var(--page-overscroll-bg, #37291d); overscroll-behavior-y:none; }`
+- `body` is untouched (still `--ivory`), so no page section is recoloured.
+- Per-route override for premium: `src/app/premium/layout.tsx` injects `:root{--page-overscroll-bg:#37291d}` (premium footer `--p-choc`).
+- `.commerce-frame` / `.premium-frame` already give the flex column + `main{flex:1}` page shell, so short pages pin the footer to the viewport bottom.
+- Rule: the root canvas must ALWAYS equal the footer colour of the storefront/section it serves. If a footer colour changes, update `--page-overscroll-bg` for that route.
